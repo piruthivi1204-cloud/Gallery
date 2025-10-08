@@ -27,53 +27,59 @@ Publish the website in the given URL.
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Multiple Images Enlarge on Click</title>
- 
-<center>
-<style>
-  .clickable-image {
-    width: 150px;
-    height: auto;
-    margin: 10px;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-  }
-  .enlarged {
-    transform: scale(2);
-    z-index: 10;
-    position: relative;
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Image Gallery</title>
 </head>
-<body style="background-color: cyan;">
-    <h1>Avengers</h1>
+<center>
+<body>
+    <header style="text-align: center; background-color: #333; color: white; padding: 1rem 0;">
+        <h1>Avengers</h1>
+    </header>
 
-<img class="clickable-image" src="ironman.jpeg" alt="Image 1" />
-<img class="clickable-image" src="spider.jpeg" alt="Image 2" />
-<img class="clickable-image" src="loki.jpeg" alt="Image 3" />
-<img class="clickable-image" src="cap.jpeg" alt="Image 4" />
-<img class="clickable-image" src="black.jpeg" alt="Image 5" />
-<br>
-<br>
-<h2>Image Gallery Designed By:</h2>
-<h3>Piruthiviraj G (25016420)</h3>
-<script>
-  const images = document.querySelectorAll('.clickable-image');
+    <div style="white-space: nowrap; overflow-x: auto; padding: 1rem;">
+        <div style="display: inline-block; margin-right: 10px;" onclick="openModal(this)">
+            <img src="black.jpeg" style="height: 200px;">
+        </div>
+        <div style="display: inline-block; margin-right: 10px;" onclick="openModal(this)">
+            <img src="cap.jpeg" style="height: 200px;">
+        </div>
+        <div style="display: inline-block; margin-right: 10px;" onclick="openModal(this)">
+            <img src="ironman.jpeg" style="height: 200px;">
+        </div>
+        <div style="display: inline-block;" onclick="openModal(this)">
+            <img src="loki.jpeg" style="height: 200px;">
+        </div>
+        <div style="display: inline-block;" onclick="openModal(this)">
+            <img src="spider.jpeg" style="height: 200px;">
+        </div>
+        
+    </div>
 
-  images.forEach(img => {
-    img.addEventListener('click', () => {a
-      img.classList.toggle('enlarged');
-    });
-  });
-</script>
-</center>
+    <div id="modal" style="display: none; position: fixed; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.9);">
+        <span style="position: absolute; top: 15px; right: 35px; color: white; font-size: 40px; font-weight: bold; cursor: pointer;" onclick="closeModal()">&times;</span>
+        <img id="modalImage" style="display: block; margin: 5% auto; max-width: 80%;">
+    </div>
+
+    <script>
+        function openModal(element) {
+            var modal = document.getElementById("modal");
+            var modalImg = document.getElementById("modalImage");
+            modal.style.display = "block";
+            modalImg.src = element.querySelector("img").src;
+        }
+
+        function closeModal() {
+            document.getElementById("modal").style.display = "none";
+        }
+    </script>
+    
+    </center>
 </body>
 </html>
 
 ```
 # OUTPUT:
-![alt text](<Screenshot 2025-10-08 141754.png>)
+![alt text](<Screenshot 2025-10-08 212746.png>)
 # RESULT:
 The program for designing an interactive image gallery using HTML, CSS and JavaScript is executed successfully.
